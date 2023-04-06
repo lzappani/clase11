@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -7,13 +6,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) {
         if (args.length != 2) {
             System.err.println("Se deben proporcionar dos argumentos: la ruta del archivo CSV y el tipo de salida (JSON)");
             System.exit(1);
@@ -40,23 +37,22 @@ public class Main {
                 }
                 Oferta oferta = null;
                 switch (fields[4]) {
-                    case "%":
-                        oferta = new Oferta(
-                                new Producto(fields[0],
-                                        new Peso(
-                                                Double.parseDouble(fields[1]),
-                                                fields[2]),
-                                        Double.parseDouble(fields[3])),
-                                new DescuentoPorcentual(
-                                        Double.parseDouble(fields[5]),
-                                        Double.parseDouble(fields[6])),
-                                fields[7],
-                                fields[8]
-                        );
-                        break;
-                    default:
+                    case "%" -> oferta = new Oferta(
+                            new Producto(fields[0],
+                                    new Peso(
+                                            Double.parseDouble(fields[1]),
+                                            fields[2]),
+                                    Double.parseDouble(fields[3])),
+                            new DescuentoPorcentual(
+                                    Double.parseDouble(fields[5]),
+                                    Double.parseDouble(fields[6])),
+                            fields[7],
+                            fields[8]
+                    );
+                    default -> {
                         System.err.println("Tipo de descuento aun no definido");
                         System.exit(1);
+                    }
                 }
                 ofertas.add(oferta);
             }

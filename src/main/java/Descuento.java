@@ -1,6 +1,5 @@
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import lombok.NonNull;
 
 @Data
 public abstract class Descuento {
