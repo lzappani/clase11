@@ -1,3 +1,4 @@
+Producto,Peso,Unidad,Precio,Tipo de Descuento,Cantidad,Tope,Fecha Desde, Fecha Hasta
 Azucar,12,kg,700,%,0.3,100,2023-02-23,2023-03-23
 Sal de Mesa,10,kg,500,%,0.3,100,2023-02-23,2023-03-23
 Cafe,500,g,250,%,0.3,100,2023-02-23,2023-03-23

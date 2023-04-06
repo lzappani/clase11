@@ -27,7 +27,7 @@ public class Main {
 
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/" + csvFilePath))) {
             String line;
-
+            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
 
